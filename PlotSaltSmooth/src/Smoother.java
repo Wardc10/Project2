@@ -7,7 +7,7 @@ public class Smoother {
         double sum, rollingAvg;
 
         try {
-            Read_CSV.read(csvFile);
+            CSV_Reader.read(csvFile);
             //send csv data to unsalted arraylist
             for(int i=0; i<CSV_Reader.data.size(); i++){
                 unsmoothed.add(CSV_Reader.data.get(i));

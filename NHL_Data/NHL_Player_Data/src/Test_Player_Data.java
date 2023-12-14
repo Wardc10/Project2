@@ -17,10 +17,38 @@ public class Test_Player_Data {
 
     public static double avgPoints_Top100(){
         ArrayList<Double> top100points = new ArrayList<Double>();
-        for(int i=0; i<100; i++) {
+        for(int i=0; i<99; i++) {
             top100points.add(Double.valueOf(Read_CSV.playerData.get(i).getPoints()));
         }
         return sl.findMean(top100points);
+    }
+    public static int numdefensemen(){
+        int defensemen = 0;
+        for(int i=0; i<Read_CSV.playerData.size(); i++){
+            if(Read_CSV.playerData.get(i).getPosition().equals("D")){
+                defensemen++;
+            }
+           
+        }
+        return defensemen;
+    }
+    public static int over100points(){
+        int over = 0;
+        for(int i=0; i<99; i++){
+            if(Read_CSV.playerData.get(i).getPoints() >= 100){
+                over++;
+            }
+        }
+        return over;
+    }
+    public static int dmanover100(){
+        int d_over = 0;
+        for(int i=0; i<99; i++){
+            if((Read_CSV.playerData.get(i).getPoints() >= 100) && Read_CSV.playerData.get(i).getPosition().equals("D")){
+                d_over++;
+            }
+        }
+        return d_over;
     }
 
     public static int avgPoints_41GP(){
@@ -52,6 +80,10 @@ public class Test_Player_Data {
         System.out.println("Average Number of Points Scored in the NHL 2022/23 Season, among all Skaters: "+df.format(avgPoints()));
         System.out.println("Average Number of Points Scored in the NHL 2022/23 Season, Within the top 100 Point-scorers: "+df.format(avgPoints_Top100()));
         System.out.println("Average Number of Points Scored in the NHL 2022/23 Season, With 41+ Games Played: "+df.format(avgPoints_41GP()));
+        System.out.println("Number of Players in the NHL 2022/23 Season, With Over 100 Points: "+over100points());
+        System.out.println("Number of Defensemen that played a game in the NHL 2022/23 Season: "+numdefensemen());
+        System.out.println("Number of Defensemen in the NHL 2022/23 Season, With Over 100 Points: "+dmanover100());
+
         // for(int i=0; i<50; i++){
         //     Player data = CSV_Reader.playerData.get(i);
         //     System.out.println(data.getName()+" "+data.getTeam()+" "+data.getPosition()+" "+data.getGamesPlayed()+" "+data.getGoals()
@@ -67,5 +99,6 @@ public class Test_Player_Data {
         String csvFile = "C:/Users/wardc/Documents/nhl-stats.csv";
         Read_CSV.read(csvFile);
         printResults();
+        
     }
 }

@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public class Player {
     String name, team, position, gamesPlayed, goals,
      assists, points, plusMinus, penaltyMinutes,
       shotsOnGoal, gameWinningGoal, powerPlayGoal, powerPlayAssist,
-       shortHandedGoal, shortHandedAssist, hits;
+       shortHandedGoal, shortHandedAssist, hits, east, west;
     Player(String name, String team, String position, String gamesPlayed, String goals, 
     String assists, String points, String plusMinus, String penaltyMinutes,
      String shotsOnGoal, String gameWinningGoal, String powerPlayGoal, String powerPlayAssist,
@@ -75,5 +77,22 @@ public class Player {
     }
     public int getHits() {
         return toInt(hits);
+    }
+    public String getConference(ArrayList<Player> p){
+        String east = "East";
+        String west = "West";
+        for(int i=0 ; i<p.size(); i++){
+            if(team == "BOS" || team == "NYR" || team == "FLA" || team == "TOR" || 
+            team == "NYI" || team == "DET" || team == "PHI" || team == "WSH" ||
+             team == "NJD" || team == "CAR" || team == "TBL" || team == "PIT" ||
+              team == "MTL" || team == "BUF" || team == "CBJ" || team == "OTT"){
+            return east;
+        }
+        else{
+            return west;
+        }
+        }
+        return west;
+        
     }
 }

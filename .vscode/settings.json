@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "NHL_Data\\NHL_Player_Data\\src",
+        "PlotSaltSmooth\\src",
+        "Stocks\\Stock_Simulation\\src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "StatsLibrary.jar"
+    ]
+}

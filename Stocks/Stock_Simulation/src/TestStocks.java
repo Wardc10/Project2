@@ -91,7 +91,7 @@ public class TestStocks {
 
     public static void main(String[] args) throws IOException{
         //set csv to read from file path
-        String csvFile = "C:/Users/wardc/Documents/MRNA.csv";
+        String csvFile = "C:/Users/wardc/Documents/AMZN.csv";
         //read csv data and store in: ArrayList<Stock> stockData
         Stock_Reader.read_csv(csvFile);
         //converts stockData array to type Coord for PPS usability

@@ -9,8 +9,8 @@ public class Test_Player_Data {
 
     public static double avgPoints(){
         ArrayList<Double> points = new ArrayList<Double>();
-        for(int i=0; i<CSV_Reader.playerData.size(); i++) {
-            points.add(Double.valueOf(CSV_Reader.playerData.get(i).getPoints()));
+        for(int i=0; i<Read_CSV.playerData.size(); i++) {
+            points.add(Double.valueOf(Read_CSV.playerData.get(i).getPoints()));
         }
         return sl.findMean(points);
     }
@@ -18,7 +18,7 @@ public class Test_Player_Data {
     public static double avgPoints_Top100(){
         ArrayList<Double> top100points = new ArrayList<Double>();
         for(int i=0; i<100; i++) {
-            top100points.add(Double.valueOf(CSV_Reader.playerData.get(i).getPoints()));
+            top100points.add(Double.valueOf(Read_CSV.playerData.get(i).getPoints()));
         }
         return sl.findMean(top100points);
     }
@@ -26,10 +26,10 @@ public class Test_Player_Data {
     public static int avgPoints_41GP(){
         ArrayList<Player> over41GP = new ArrayList<Player>();
         int avg_points = 0;
-        for(int i=0; i<CSV_Reader.playerData.size(); i++) {
-            if(CSV_Reader.playerData.get(i).getGamesPlayed() >= 41){
-                over41GP.add(CSV_Reader.playerData.get(i));
-                avg_points += CSV_Reader.playerData.get(i).getPoints();
+        for(int i=0; i<Read_CSV.playerData.size(); i++) {
+            if(Read_CSV.playerData.get(i).getGamesPlayed() >= 41){
+                over41GP.add(Read_CSV.playerData.get(i));
+                avg_points += Read_CSV.playerData.get(i).getPoints();
             }
         }
         return avg_points/over41GP.size();
@@ -65,7 +65,7 @@ public class Test_Player_Data {
         // Read csv file with nhl player stats from the 2022-23 season.
         // Change filepath for your own system.
         String csvFile = "C:/Users/wardc/Documents/nhl-stats.csv";
-        CSV_Reader.read(csvFile);
+        Read_CSV.read(csvFile);
         printResults();
     }
 }

@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CSV_Reader {
+public class Read_CSV {
     public static ArrayList<Player> playerData = new ArrayList<Player>();
 
     public static void read(String csvFile) throws IOException {

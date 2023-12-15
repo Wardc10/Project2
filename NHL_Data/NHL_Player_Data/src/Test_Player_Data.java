@@ -78,17 +78,26 @@ public class Test_Player_Data {
         System.out.println("Shooting Percentage Among All Skaters in the 2022-23 NHL Season: "+shooting_percentage);
     }
 
-    // logic is flawed, doesn't work as I thought it would.
-    // public static double secondary_assists_on_a_goal() {
-    //     double total_goals = 0;
-    //     double total_assists = 0;
+    public static int has_a_point = 0;
+    public static int has_no_points = 0;
+    //calculates the percentage of players that don't have a point on the season
+    //based off of example 3.7 
+    public static double percent_defective(){
+        
+        for(int i=0; i<Read_CSV.playerData.size(); i++){
+            if(Read_CSV.playerData.get(i).getPoints() >= 1){
+                has_a_point++;
+            }
+            else{
+                has_no_points++;
+            }
+        }
+        String point = String.valueOf(has_a_point);
+        String no_points = String.valueOf(has_no_points);
+        double point_ratio = Double.valueOf(no_points)/Double.valueOf(point);
+        return point_ratio;
 
-    //     for(int i=0; i<CSV_Reader.playerData.size(); i++){
-    //         total_goals += CSV_Reader.playerData.get(i).getGoals();
-    //         total_assists += CSV_Reader.playerData.get(i).getAssists();
-    //     }
-    //     return (total_assists-total_goals)/total_goals;
-    // }
+    }
 
 
     public static void printResults(){
@@ -100,6 +109,14 @@ public class Test_Player_Data {
         System.out.println("Number of Defensemen in the NHL 2022/23 Season, With Over 100 Points: "+dmanover100());
         leagueshotpercentage();
         System.out.println("Number of ways 16 teams can randomly be assigned to 8 playoff mathcups: "+sl.combination(16, 8));
+        System.out.println("Ratio of player with no points to players with at least a point: "+percent_defective());
+        System.out.println("Probability that you will find a player without a point, if 5 that are randomly pickedt: "+sl.binomial(5, 0, .125, .875));
+        System.out.println("Probability that the third shot on goal is the first to go in: "+sl.geometric(.1, .9, 3));
+        System.out.println("Probability that the no shots on goal go in out of 20 in a period: "+sl.geometric(.1, .9, 0));
+        System.out.println("Probability that the first player with a point is found on 2nd trial: "+sl.negative_binomial(2,1,.125,.875));
+        System.out.println("Probability that the first player with a point is found on 5th trial: "+sl.negative_binomial(5,1,.125,.875));
+        System.out.println("Probability that the first player with a point is found on or befrore 5th trial: "+ (1 - sl.negative_binomial(5,1,.125,.875)));
+        System.out.println("Probability that the top 5 players are selected for All-Star Games, out of 20 random selections: "+(sl.hypergeometric(5, 6, 951, 20)));
 
         // for(int i=0; i<50; i++){
         //     Player data = CSV_Reader.playerData.get(i);
@@ -116,5 +133,6 @@ public class Test_Player_Data {
         String csvFile = "C:/Users/wardc/Documents/nhl-stats.csv";
         Read_CSV.read(csvFile);
         printResults();
+        percent_defective();
     }
 }

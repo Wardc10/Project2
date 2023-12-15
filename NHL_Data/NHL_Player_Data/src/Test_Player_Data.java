@@ -116,7 +116,6 @@ public class Test_Player_Data {
         System.out.println("Probability that the first player with a point is found on 2nd trial: "+sl.negative_binomial(2,1,.125,.875));
         System.out.println("Probability that the first player with a point is found on 5th trial: "+sl.negative_binomial(5,1,.125,.875));
         System.out.println("Probability that the first player with a point is found on or befrore 5th trial: "+ (1 - sl.negative_binomial(5,1,.125,.875)));
-        System.out.println("Probability that the top 5 players are selected for All-Star Games, out of 20 random selections: "+(sl.hypergeometric(5, 6, 951, 20)));
 
         // for(int i=0; i<50; i++){
         //     Player data = CSV_Reader.playerData.get(i);
@@ -133,6 +132,5 @@ public class Test_Player_Data {
         String csvFile = "C:/Users/wardc/Documents/nhl-stats.csv";
         Read_CSV.read(csvFile);
         printResults();
-        percent_defective();
     }
 }

@@ -78,21 +78,19 @@ public class Player {
     public int getHits() {
         return toInt(hits);
     }
-    public String getConference(ArrayList<Player> p){
-        String east = "East";
-        String west = "West";
+    public ArrayList<String> getConference(ArrayList<Player> p){
+        ArrayList<String> conference = new ArrayList<String>();
         for(int i=0 ; i<p.size(); i++){
-            if(team == "BOS" || team == "NYR" || team == "FLA" || team == "TOR" || 
-            team == "NYI" || team == "DET" || team == "PHI" || team == "WSH" ||
-             team == "NJD" || team == "CAR" || team == "TBL" || team == "PIT" ||
-              team == "MTL" || team == "BUF" || team == "CBJ" || team == "OTT"){
-            return east;
+            if(p.get(i).team == "BOS" || p.get(i).team == "NYR" || p.get(i).team == "FLA" || p.get(i).team == "TOR" || 
+                p.get(i).team == "NYI" || p.get(i).team == "DET" || p.get(i).team == "PHI" || p.get(i).team == "WSH" ||
+                 p.get(i).team == "NJD" || p.get(i).team == "CAR" || p.get(i).team == "TBL" || p.get(i).team == "PIT" ||
+                  p.get(i).team == "MTL" || p.get(i).team == "BUF" || p.get(i).team == "CBJ" || p.get(i).team == "OTT"){
+            conference.add("East") ;
+            }
+            else{
+                conference.add("West"); 
+            }
         }
-        else{
-            return west;
-        }
-        }
-        return west;
-        
+        return conference; 
     }
 }

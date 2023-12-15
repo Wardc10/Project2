@@ -63,6 +63,21 @@ public class Test_Player_Data {
         return avg_points/over41GP.size();
     }
 
+    public static int total_goals = 0;
+    public static int total_shots = 0;    
+    public static void leagueshotpercentage(){
+        for(int i=0; i<Read_CSV.playerData.size(); i++) {
+            total_goals+=(Read_CSV.playerData.get(i).getGoals());
+            total_shots+=(Read_CSV.playerData.get(i).getSOG());
+        }
+        String goal = String.valueOf(total_goals);
+        String shot = String.valueOf(total_shots);
+        System.out.println("Total Goals Scored in the 2022-23 NHL Season: "+total_goals);
+        System.out.println("Total Shots on Goal in the 2022-23 NHL Season: "+total_shots);
+        double shooting_percentage = Double.valueOf(goal)/Double.valueOf(shot);
+        System.out.println("Shooting Percentage Among All Skaters in the 2022-23 NHL Season: "+shooting_percentage);
+    }
+
     // logic is flawed, doesn't work as I thought it would.
     // public static double secondary_assists_on_a_goal() {
     //     double total_goals = 0;
@@ -83,6 +98,8 @@ public class Test_Player_Data {
         System.out.println("Number of Players in the NHL 2022/23 Season, With Over 100 Points: "+over100points());
         System.out.println("Number of Defensemen that played a game in the NHL 2022/23 Season: "+numdefensemen());
         System.out.println("Number of Defensemen in the NHL 2022/23 Season, With Over 100 Points: "+dmanover100());
+        leagueshotpercentage();
+        System.out.println("Number of ways 16 teams can randomly be assigned to 8 playoff mathcups: "+sl.combination(16, 8));
 
         // for(int i=0; i<50; i++){
         //     Player data = CSV_Reader.playerData.get(i);
@@ -99,6 +116,5 @@ public class Test_Player_Data {
         String csvFile = "C:/Users/wardc/Documents/nhl-stats.csv";
         Read_CSV.read(csvFile);
         printResults();
-        
     }
 }

@@ -1,8 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "NHL_Player_Data/src/StatsLibrary.jar",
-        "PlotSaltSmooth/src/exp4j-0.4.8.jar",
-        "NHL_PlayerData/src/StatsLibrary.jar"
-    ]
-}

@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "resources/exp4j-0.4.8.jar"
+    ]
+}
